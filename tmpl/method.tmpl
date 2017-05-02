@@ -48,36 +48,45 @@ var self = this;
 <?js= this.partial('details.tmpl', data) ?>
 
 <?js if (data.kind !== 'module' && data.requires && data.requires.length) { ?>
+<div class="boxed requires">
 <h5>Richiede:</h5>
 <ul><?js data.requires.forEach(function(r) { ?>
     <li><?js= self.linkto(r) ?></li>
 <?js }); ?></ul>
+</div>
 <?js } ?>
 
 <?js if (data.fires && fires.length) { ?>
+<div class="boxed emits">
 <h5>Emette:</h5>
 <ul><?js fires.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
+</div>
 <?js } ?>
 
 <?js if (data.listens && listens.length) { ?>
+<div class="boxed listen">
 <h5>In ascolto su:</h5>
 <ul><?js listens.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
+</div>
 <?js } ?>
 
 <?js if (data.listeners && listeners.length) { ?>
+<div class="boxed listener">
 <h5>In ascolto su:</h5>
 <ul><?js listeners.forEach(function(f) { ?>
     <li><?js= self.linkto(f) ?></li>
 <?js }); ?></ul>
+</div>
 <?js } ?>
 
 <?js if (data.exceptions && exceptions.length) { ?>
+<div class="boxed exceptions">
 <h5>Eccezioni:</h5>
-<?js if (exceptions.length > 1) { ?><ul><? js
+<?js if (exceptions.length > 1) { ?><ul><?js
     exceptions.forEach(function(r) { ?>
         <li><?js= self.partial('exceptions.tmpl', r) ?></li>
     <?js });
@@ -85,9 +94,12 @@ var self = this;
     exceptions.forEach(function(r) { ?>
         <?js= self.partial('exceptions.tmpl', r) ?>
     <?js });
-} } ?>
+} ?>
+</div>
+<?js } ?>
 
 <?js if (data.returns && returns.length) { ?>
+<div class="boxed returns">
 <h5>Ritorna:</h5>
 <?js if (returns.length > 1) { ?><ul><?js
     returns.forEach(function(r) { ?>
@@ -97,7 +109,9 @@ var self = this;
     returns.forEach(function(r) { ?>
         <?js= self.partial('returns.tmpl', r) ?>
     <?js });
-} } ?>
+} ?>
+</div>
+<?js } ?>
 
 <?js if (data.examples && examples.length) { ?>
     <h5>Esemp<?js= examples.length > 1? 'i':'io' ?></h5>
